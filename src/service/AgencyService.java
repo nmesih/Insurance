@@ -33,7 +33,7 @@ public class AgencyService {
     }
 
 
-    public void addInsurancetoAgency(Agency agency, InsuranceCompany insuranceCompany) {
+    public void addInsuranceToAgency(Agency agency, InsuranceCompany insuranceCompany) {
         if (agency.getInsuranceCompanyList() != null) {
             agency.getInsuranceCompanyList().add(insuranceCompany);
         } else {

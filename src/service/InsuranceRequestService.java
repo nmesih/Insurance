@@ -9,17 +9,16 @@ import java.util.ArrayList;
 
 public class InsuranceRequestService {
 
-    public InsuranceRequest createInsuranceRequest(Vehicle vehicle, Policy policy) {
+    public InsuranceRequest createInsuranceRequest(Vehicle vehicle) {
         InsuranceRequest insuranceRequest = new InsuranceRequest();
-        insuranceRequest.setPolicy(policy);
         insuranceRequest.setVehicle(vehicle);
         return insuranceRequest;
     }
 
-    public void addProposalToInsuranceRequest(InsuranceRequest insuranceRequest, Proposal proposal){
-        if(insuranceRequest.getProposalList()!=null) {
+    public void addProposalToInsuranceRequest(InsuranceRequest insuranceRequest, Proposal proposal) {
+        if (insuranceRequest.getProposalList() != null) {
             insuranceRequest.getProposalList().add(proposal);
-        }else {
+        } else {
             ArrayList<Proposal> proposalList = new ArrayList<>();
             proposalList.add(proposal);
             insuranceRequest.setProposalList(proposalList);

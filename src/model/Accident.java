@@ -1,11 +1,14 @@
 package model;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.Locale;
+import java.util.spi.LocaleServiceProvider;
 
 public class Accident {
 
-    private Date date;
+    private LocalDate date;
 
     private String description;
     private BigDecimal damagePrice;
@@ -15,7 +18,7 @@ public class Accident {
     public Accident() {
     }
 
-    public Accident(Date date, String description, BigDecimal damagePrice, int failureRate) {
+    public Accident(LocalDate date, String description, BigDecimal damagePrice, int failureRate) {
         this.date = date;
         this.description = description;
         this.damagePrice = damagePrice;
@@ -23,11 +26,11 @@ public class Accident {
     }
 
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -53,5 +56,15 @@ public class Accident {
 
     public void setFailureRate(int failureRate) {
         this.failureRate = failureRate;
+    }
+
+    @Override
+    public String toString() {
+        return "Accident{" +
+                "date=" + date +
+                ", description='" + description + '\'' +
+                ", damagePrice=" + damagePrice +
+                ", failureRate=" + failureRate +
+                '}';
     }
 }

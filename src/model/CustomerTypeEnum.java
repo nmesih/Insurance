@@ -2,5 +2,5 @@ package model;
 
 public enum CustomerTypeEnum {
 
-    INDIVIDUAL, CORPARATE
+    INDIVIDUAL, CORPORATE
 }

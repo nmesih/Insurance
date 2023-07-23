@@ -67,4 +67,17 @@ public class Vehicle {
     public void setColorTypeEnum(ColorTypeEnum colorTypeEnum) {
         this.colorTypeEnum = colorTypeEnum;
     }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", plate='" + plate + '\'' +
+                ", chassisNumber='" + chassisNumber + '\'' +
+                ", modelYear=" + modelYear +
+                ", accidentList=" + accidentList +
+                ", colorTypeEnum=" + colorTypeEnum +
+                '}';
+    }
 }

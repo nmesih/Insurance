@@ -30,7 +30,7 @@ public class InsuranceCompanyService {
         }
     }
 
-    public void addInsuranceToInsuranceCompany(InsuranceCompany insuranceCompany, Insurance insurance){
+    public void addInsuranceToInsuranceCompany(Insurance insurance,InsuranceCompany insuranceCompany){
         if(insuranceCompany.getInsuranceList()!=null) {
             insuranceCompany.getInsuranceList().add(insurance);
         }else {

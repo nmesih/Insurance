@@ -18,6 +18,15 @@ public class BankAccountService {
     }
 
     public BankAccount getBankAccountWithEnoughMoney(Customer bankAccountOwner, BigDecimal amount) {
+        for (BankAccount bankAccount : bankAccountOwner.getBankAccountList()) {
+            if (bankAccount.getAmount().compareTo(amount) >= 0) {
+                return bankAccount;
+            }
+        }
+        return null;
+    }
+
+    public BankAccount getBankAccountWithEnoughMoney(Agency bankAccountOwner, BigDecimal amount) {
 
         for (BankAccount bankAccount : bankAccountOwner.getBankAccountList()) {
             if (bankAccount.getAmount().compareTo(amount) >= 0) {
@@ -27,7 +36,16 @@ public class BankAccountService {
         return null;
     }
 
-    public BankAccount getBankAccountToSendMoney(Customer bankAccountOwner){
+    public BankAccount getBankAccountWithEnoughMoney(InsuranceCompany bankAccountOwner, BigDecimal amount) {
+        for (BankAccount bankAccount : bankAccountOwner.getBankAccountList()) {
+            if (bankAccount.getAmount().compareTo(amount) >= 0) {
+                return bankAccount;
+            }
+        }
+        return null;
+    }
+
+    public BankAccount getBankAccountToSendMoney(Customer bankAccountOwner) {
         BigDecimal amount = BigDecimal.valueOf(0);
         BankAccount bankAccountWithMinMoney = null;
         for (BankAccount bankAccount : bankAccountOwner.getBankAccountList()) {
@@ -39,20 +57,7 @@ public class BankAccountService {
         return bankAccountWithMinMoney;
     }
 
-    public BankAccount getBankAccountToSendMoney(Agency bankAccountOwner){
-        BigDecimal amount = BigDecimal.valueOf(0);
-        BankAccount bankAccountWithMinMoney = null;
-
-        for (BankAccount bankAccount : bankAccountOwner.getBankAccountList()) {
-            if (bankAccount.getAmount().compareTo(amount) > 0){
-                bankAccountWithMinMoney = bankAccount;
-                amount = bankAccountWithMinMoney.getAmount();
-            }
-        }
-        return bankAccountWithMinMoney;
-    }
-
-    public BankAccount getBankAccountToSendMoney(InsuranceCompany bankAccountOwner){
+    public BankAccount getBankAccountToSendMoney(Agency bankAccountOwner) {
         BigDecimal amount = BigDecimal.valueOf(0);
         BankAccount bankAccountWithMinMoney = null;
         for (BankAccount bankAccount : bankAccountOwner.getBankAccountList()) {
@@ -62,5 +67,23 @@ public class BankAccountService {
             }
         }
         return bankAccountWithMinMoney;
+    }
+
+    public BankAccount getBankAccountToSendMoney(InsuranceCompany bankAccountOwner) {
+        BigDecimal amount = BigDecimal.valueOf(0);
+        BankAccount bankAccountWithMinMoney = null;
+        for (BankAccount bankAccount : bankAccountOwner.getBankAccountList()) {
+            if (bankAccount.getAmount().compareTo(amount) > 0) {
+                bankAccountWithMinMoney = bankAccount;
+                amount = bankAccountWithMinMoney.getAmount();
+            }
+        }
+        return bankAccountWithMinMoney;
+
+    }
+
+    public void makePayment(BankAccount receiverAccount, BankAccount senderAccount, BigDecimal amount) {
+        receiverAccount.setAmount(receiverAccount.getAmount().add(amount));
+        senderAccount.setAmount(senderAccount.getAmount().subtract(amount));
     }
 }

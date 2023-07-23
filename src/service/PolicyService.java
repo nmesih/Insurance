@@ -5,12 +5,12 @@ import model.Policy;
 import model.Vehicle;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class PolicyService {
 
     public Policy createPolicy(InsuranceCompany insuranceCompany, Vehicle vehicle, BigDecimal price
-            , Date startDate, Date endDate) {
+            , LocalDate startDate, LocalDate endDate) {
 
         Policy policy = new Policy();
         policy.setInsuranceCompany(insuranceCompany);
